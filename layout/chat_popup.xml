@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/botReply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello! How can I help you?"
+        android:textSize="16sp"
+        android:layout_marginBottom="12dp" />
+
+    <EditText
+        android:id="@+id/userMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ask something..." />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
