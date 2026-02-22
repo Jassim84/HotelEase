@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0F1923">
+
+    <!-- ══════════════════════════════════════════════
+         HEADER
+    ══════════════════════════════════════════════ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#0F1923"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="16dp">
+
+        <!-- Title row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_media_previous"
+                android:background="#33FFFFFF"
+                android:padding="10dp"
+                android:layout_marginEnd="14dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Room Dining"
+                android:textSize="26sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <!-- Cart badge -->
+            <LinearLayout
+                android:id="@+id/cartBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="@android:color/transparent">
+
+                <!-- Badge background via LayerDrawable not needed — use a card approach -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🛒 "
+                    android:textSize="16sp"
+                    android:background="#1E2D3D"
+                    android:padding="0dp"/>
+
+                <TextView
+                    android:id="@+id/tvCartCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="15sp"
+                    android:textColor="#F4A228"
+                    android:textStyle="bold"
+                    android:background="#1E2D3D" />
+
+                <!-- Invisible spacer to complete the badge look -->
+                <Space
+                    android:layout_width="6dp"
+                    android:layout_height="1dp"
+                    android:background="#1E2D3D" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivered straight to your room · 7AM – 10PM"
+            android:textSize="13sp"
+            android:textColor="#8A9BB0"
+            android:layout_marginTop="6dp" />
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════════════
+         SCROLLABLE MENU
+    ══════════════════════════════════════════════ -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp">
+
+
+            <!-- ══════════ BREAKFAST ══════════ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌅  Breakfast"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#33F4A228"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Classic Pancakes -->
+            <LinearLayout
+                android:id="@+id/row_pancakes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="10dp"
+                android:background="#1A2535">
+                <LinearLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:gravity="center"
+                    android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥞" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:id="@+id/name_pancakes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Classic Pancakes" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fluffy stack with maple syrup &amp; butter" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$6.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_pancakes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_pancakes" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_pancakes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Full English -->
+            <LinearLayout android:id="@+id/row_english" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍳" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Full English" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Eggs, bacon, sausage, beans &amp; toast" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$9.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_english" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_english" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_english" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Avocado Toast -->
+            <LinearLayout android:id="@+id/row_avocado" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥑" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Avocado Toast" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sourdough, smashed avo, poached egg &amp; chili" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$8.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_avocado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_avocado" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_avocado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Continental Basket -->
+            <LinearLayout android:id="@+id/row_continental" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥐" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Continental Basket" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Assorted pastries, jam &amp; fresh OJ" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$7.49" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_continental" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_continental" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_continental" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Acai Bowl -->
+            <LinearLayout android:id="@+id/row_acai" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍓" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Acai Bowl" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Blended acai, granola, fresh berries &amp; honey" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$8.49" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_acai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_acai" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_acai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- ══════════ LUNCH ══════════ -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☀️  Lunch" android:textSize="18sp" android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="20dp" android:layout_marginBottom="4dp" />
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#33F4A228" android:layout_marginBottom="12dp" />
+
+            <!-- Caesar Salad -->
+            <LinearLayout android:id="@+id/row_caesar" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥗" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Caesar Salad" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Romaine, parmesan, croutons &amp; Caesar dressing" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$9.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_caesar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_caesar" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_caesar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- HotelEase Burger -->
+            <LinearLayout android:id="@+id/row_burger" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍔" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HotelEase Burger" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wagyu patty, aged cheddar, truffle aioli" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$14.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_burger" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_burger" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_burger" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Club Sandwich -->
+            <LinearLayout android:id="@+id/row_club" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥪" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Club Sandwich" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Triple-decker with turkey, bacon &amp; avocado" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$11.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_club" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_club" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_club" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Tom Yum Noodles -->
+            <LinearLayout android:id="@+id/row_tomyum" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍜" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tom Yum Noodles" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Spicy lemongrass broth, shrimp &amp; mushrooms" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$12.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_tomyum" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_tomyum" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_tomyum" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Fish Tacos -->
+            <LinearLayout android:id="@+id/row_tacos" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌮" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fish Tacos" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Crispy cod, mango salsa &amp; chipotle crema" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$13.49" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_tacos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_tacos" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_tacos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- ══════════ DINNER ══════════ -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌙  Dinner" android:textSize="18sp" android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="20dp" android:layout_marginBottom="4dp" />
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#33F4A228" android:layout_marginBottom="12dp" />
+
+            <!-- Ribeye Steak -->
+            <LinearLayout android:id="@+id/row_ribeye" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥩" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ribeye Steak" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="300g grass-fed ribeye, fries &amp; peppercorn sauce" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$28.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_ribeye" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_ribeye" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_ribeye" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Grilled Lobster -->
+            <LinearLayout android:id="@+id/row_lobster" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🦞" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Grilled Lobster" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Half lobster, garlic butter &amp; seasonal veg" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$34.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_lobster" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_lobster" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_lobster" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Truffle Pasta -->
+            <LinearLayout android:id="@+id/row_pasta" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍝" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Truffle Pasta" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Handmade tagliatelle, black truffle &amp; parmesan" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$18.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_pasta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_pasta" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_pasta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Chicken Supreme -->
+            <LinearLayout android:id="@+id/row_chicken" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🐔" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chicken Supreme" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pan-seared supreme, mushroom risotto &amp; jus" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$19.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_chicken" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_chicken" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_chicken" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Vegetarian Wellington -->
+            <LinearLayout android:id="@+id/row_wellington" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥬" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Vegetarian Wellington" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Roasted veg &amp; feta in golden puff pastry" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$16.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_wellington" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_wellington" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_wellington" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- ══════════ DRINKS ══════════ -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍹  Drinks" android:textSize="18sp" android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="20dp" android:layout_marginBottom="4dp" />
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#33F4A228" android:layout_marginBottom="12dp" />
+
+            <!-- Specialty Coffee -->
+            <LinearLayout android:id="@+id/row_coffee" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="☕" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Specialty Coffee" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Espresso, cappuccino, flat white or latte" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$4.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_coffee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_coffee" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_coffee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Fresh Juice -->
+            <LinearLayout android:id="@+id/row_juice" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🧃" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fresh Juice" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Orange, apple, mango or mixed berry" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$4.49" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_juice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_juice" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_juice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Herbal Tea -->
+            <LinearLayout android:id="@+id/row_tea" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍵" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Herbal Tea" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chamomile, peppermint, ginger or green" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$3.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_tea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_tea" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_tea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Smoothie -->
+            <LinearLayout android:id="@+id/row_smoothie" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥤" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Smoothie" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tropical, berry blast or green detox" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$6.49" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_smoothie" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_smoothie" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_smoothie" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Sparkling Water -->
+            <LinearLayout android:id="@+id/row_water" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍾" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sparkling Water" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Premium still or sparkling, 500ml" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$2.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_water" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_water" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_water" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- ══════════ DESSERTS ══════════ -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍰  Desserts" android:textSize="18sp" android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="20dp" android:layout_marginBottom="4dp" />
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#33F4A228" android:layout_marginBottom="12dp" />
+
+            <!-- Lava Cake -->
+            <LinearLayout android:id="@+id/row_lava" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍫" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lava Cake" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Warm chocolate cake with vanilla ice cream" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$7.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_lava" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_lava" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_lava" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Creme Brulee -->
+            <LinearLayout android:id="@+id/row_brulee" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍮" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Creme Brulee" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Classic vanilla custard with caramelised sugar" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$6.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_brulee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_brulee" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_brulee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Gelato Trio -->
+            <LinearLayout android:id="@+id/row_gelato" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍨" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gelato Trio" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Three scoops of seasonal artisan gelato" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$5.99" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_gelato" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_gelato" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_gelato" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- NY Cheesecake -->
+            <LinearLayout android:id="@+id/row_cheesecake" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥧" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NY Cheesecake" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Baked cheesecake with berry compote" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$6.49" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_cheesecake" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_cheesecake" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_cheesecake" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Affogato -->
+            <LinearLayout android:id="@+id/row_affogato" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp" android:layout_marginBottom="10dp" android:background="#1A2535">
+                <LinearLayout android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:background="#243447">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍦" android:textSize="24sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Affogato" android:textSize="15sp" android:textColor="#EEF2F7" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Vanilla gelato drowned in hot espresso" android:textSize="12sp" android:textColor="#6B7E94" android:layout_marginTop="3dp" android:layout_marginBottom="6dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$5.49" android:textSize="14sp" android:textColor="#F4A228" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="#243447" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="4dp" android:paddingBottom="4dp">
+                    <TextView android:id="@+id/minus_affogato" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="−" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                    <TextView android:id="@+id/qty_affogato" android:layout_width="28dp" android:layout_height="wrap_content" android:text="0" android:textSize="15sp" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center" />
+                    <TextView android:id="@+id/plus_affogato" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:textSize="20sp" android:textColor="#F4A228" android:textStyle="bold" android:paddingStart="8dp" android:paddingEnd="8dp" android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ══════════════════════════════════════════════
+         CART FOOTER
+    ══════════════════════════════════════════════ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#1A2535"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="28dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Order Total"
+                android:textSize="15sp"
+                android:textColor="#8A9BB0" />
+
+            <TextView
+                android:id="@+id/tvCartTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$0.00"
+                android:textSize="22sp"
+                android:textColor="#F4A228"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPlaceOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Place Order"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#0F1923"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:backgroundTint="#F4A228" />
+
+    </LinearLayout>
+
+</LinearLayout>
