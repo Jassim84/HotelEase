@@ -1,123 +1,174 @@
 package com.example.hotelease;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class login_page extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.Map;
 
-    private EditText emailField, passwordField;
-    private Button manageUsersButton;
+public class registration_page extends AppCompatActivity {
+
+    private EditText fullNameField, phoneField, emailField, passwordField, confirmPasswordField;
+    private Button registerButton;
+    private TextView backToLoginText;
+
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_register);
 
-        // Firebase Auth
+        // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
-        // Bind UI
-        emailField = findViewById(R.id.signInEmailField);
-        passwordField = findViewById(R.id.signInPasswordField);
-        manageUsersButton = findViewById(R.id.manageUsersButton);
+        // Initialize views
+        fullNameField = findViewById(R.id.fullNameField);
+        phoneField = findViewById(R.id.phoneField);
+        emailField = findViewById(R.id.emailField);
+        passwordField = findViewById(R.id.passwordField);
+        confirmPasswordField = findViewById(R.id.confirmPasswordField);
+        registerButton = findViewById(R.id.registerBtn);
+        backToLoginText = findViewById(R.id.backToLoginText);
 
-        // Hide admin button first
-        manageUsersButton.setVisibility(View.GONE);
-
-        // Button click to open Manage Users
-        manageUsersButton.setOnClickListener(v -> {
-            Intent intent = new Intent(login_page.this, UserManagementDashboard.class);
-            startActivity(intent);
-        });
-
-        // Show admin button if correct admin credentials typed
-        emailField.addTextChangedListener(adminWatcher);
-        passwordField.addTextChangedListener(adminWatcher);
-    }
-
-    // TextWatcher for admin
-    private final android.text.TextWatcher adminWatcher = new android.text.TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            checkAdminCredentials();
-        }
-
-        @Override
-        public void afterTextChanged(android.text.Editable s) {}
-    };
-
-    private void checkAdminCredentials() {
-        String email = emailField.getText().toString().trim();
-        String password = passwordField.getText().toString().trim();
-
-        if (email.equals("admin@admin.hotel") && password.equals("adminhotel")) {
-            manageUsersButton.setVisibility(View.VISIBLE);
-        } else {
-            manageUsersButton.setVisibility(View.GONE);
-        }
-    }
-
-    // Sign-in method
-    public void signIn(View view) {
-        String email = emailField.getText().toString().trim();
-        String password = passwordField.getText().toString().trim();
-
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // ADMIN LOGIN
-        if (email.equals("admin@admin.hotel") && password.equals("adminhotel")) {
-            Intent intent = new Intent(login_page.this, UserManagementDashboard.class);
-            intent.putExtra("isAdmin", true);
+        // Back to login click listener
+        backToLoginText.setOnClickListener(v -> {
+            Intent intent = new Intent(registration_page.this, login_page.class);
             startActivity(intent);
             finish();
+        });
+    }
+
+    public void register(View view) {
+        String fullName = fullNameField.getText().toString().trim();
+        String phone = phoneField.getText().toString().trim();
+        String email = emailField.getText().toString().trim();
+        String password = passwordField.getText().toString().trim();
+        String confirmPassword = confirmPasswordField.getText().toString().trim();
+
+        // Input validation
+        if (TextUtils.isEmpty(fullName)) {
+            fullNameField.setError("Full name is required");
+            fullNameField.requestFocus();
             return;
         }
 
-        // NORMAL USER → Firebase login
-        mAuth.signInWithEmailAndPassword(email, password)
+        if (TextUtils.isEmpty(phone)) {
+            phoneField.setError("Phone number is required");
+            phoneField.requestFocus();
+            return;
+        }
+
+        if (phone.length() < 10) {
+            phoneField.setError("Enter a valid phone number");
+            phoneField.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(email)) {
+            emailField.setError("Email is required");
+            emailField.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailField.setError("Enter a valid email");
+            emailField.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            passwordField.setError("Password is required");
+            passwordField.requestFocus();
+            return;
+        }
+
+        if (password.length() < 6) {
+            passwordField.setError("Password must be at least 6 characters");
+            passwordField.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(confirmPassword)) {
+            confirmPasswordField.setError("Please confirm password");
+            confirmPasswordField.requestFocus();
+            return;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            confirmPasswordField.setError("Passwords do not match");
+            confirmPasswordField.requestFocus();
+            return;
+        }
+
+        // Disable button to prevent multiple clicks
+        registerButton.setEnabled(false);
+
+        // Create user using Firebase Authentication
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-
                         FirebaseUser user = mAuth.getCurrentUser();
-                        String loggedInEmail = user != null ? user.getEmail() : email;
 
-                        Toast.makeText(login_page.this, "Login successful!", Toast.LENGTH_SHORT).show();
-
-                        Intent intent = new Intent(login_page.this, room_reservation.class);
-                        intent.putExtra("userEmail", loggedInEmail);
-                        intent.putExtra("isAdmin", false);
-                        startActivity(intent);
-                        finish();
+                        if (user != null) {
+                            // Save additional user data to Firestore
+                            saveUserToFirestore(user.getUid(), fullName, phone, email);
+                        }
 
                     } else {
-                        Toast.makeText(this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-
-
+                        registerButton.setEnabled(true);
+                        Toast.makeText(registration_page.this,
+                                "Registration failed: " + task.getException().getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
-    public void goToRegister(View view) {
-        Intent intent = new Intent(login_page.this, registration_page.class);
-        startActivity(intent);
+    private void saveUserToFirestore(String userId, String fullName, String phone, String email) {
+        // Create a user data map
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("fullName", fullName);
+        userData.put("phone", phone);
+        userData.put("email", email);
+        userData.put("role", "user"); // Default role
+        userData.put("createdAt", System.currentTimeMillis());
+
+        // Save to Firestore in "users" collection
+        db.collection("users")
+                .document(userId)
+                .set(userData)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(registration_page.this,
+                            "Registration successful!",
+                            Toast.LENGTH_SHORT).show();
+
+                    // Go to login page
+                    Intent intent = new Intent(registration_page.this, login_page.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    registerButton.setEnabled(true);
+                    Toast.makeText(registration_page.this,
+                            "Failed to save user data: " + e.getMessage(),
+                            Toast.LENGTH_LONG).show();
+                });
     }
 }
