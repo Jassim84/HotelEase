@@ -1,62 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="#FFFFFF"
-    tools:context=".register">
-    <ImageView
-        android:id="@+id/registerLogo"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/hotel"
-        android:layout_marginBottom="10dp"/>
+    android:fillViewport="true"
+    android:background="#FAFAFA">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="@color/brandDark"
-        android:layout_marginBottom="20dp"/>
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        tools:context=".registration_page">
 
-    <EditText
-        android:id="@+id/emailField"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:hint="Email"
-        android:padding="10dp"
-        android:textColor="@color/brandDark"
-        android:background="@android:drawable/edit_text"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="10dp"/>
+        <!-- Logo Section -->
+        <ImageView
+            android:id="@+id/registerLogo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/hotel"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="App Logo"/>
 
-    <EditText
-        android:id="@+id/passwordField"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:hint="Password"
-        android:padding="10dp"
-        android:textColor="@color/brandDark"
-        android:background="@android:drawable/edit_text"
-        android:inputType="textPassword"
-        android:layout_marginTop="10dp"/>
+        <!-- Header Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/brandDark"
+            android:letterSpacing="0.02"
+            android:layout_marginBottom="8dp"/>
 
-    <Button
-        android:id="@+id/registerBtn"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textAllCaps="false"
-        android:onClick="register"
-        android:layout_marginTop="18dp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="@color/brandGreen"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up to get started"
+            android:textSize="16sp"
+            android:textColor="#757575"
+            android:layout_marginBottom="32dp"/>
 
-</LinearLayout>
+        <!-- Full Name Input Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Name icon"
+                    app:tint="#757575" />
+
+                <EditText
+                    android:id="@+id/fullNameField"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:hint="Full Name"
+                    android:textColorHint="#9E9E9E"
+                    android:textColor="@color/brandDark"
+                    android:textSize="16sp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textPersonName"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="0dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Phone Number Input Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/stat_sys_phone_call"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Phone icon"
+                    app:tint="#757575" />
+
+                <EditText
+                    android:id="@+id/phoneField"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:hint="Phone Number"
+                    android:textColorHint="#9E9E9E"
+                    android:textColor="@color/brandDark"
+                    android:textSize="16sp"
+                    android:background="@android:color/transparent"
+                    android:inputType="phone"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="0dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Email Input Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_dialog_email"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Email icon"
+                    app:tint="#757575" />
+
+                <EditText
+                    android:id="@+id/emailField"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:hint="Email"
+                    android:textColorHint="#9E9E9E"
+                    android:textColor="@color/brandDark"
+                    android:textSize="16sp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textEmailAddress"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="0dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Password Input Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_lock_idle_lock"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Password icon"
+                    app:tint="#757575" />
+
+                <EditText
+                    android:id="@+id/passwordField"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:hint="Password (min 6 characters)"
+                    android:textColorHint="#9E9E9E"
+                    android:textColor="@color/brandDark"
+                    android:textSize="16sp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textPassword"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="0dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Confirm Password Input Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_lock_idle_lock"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:tint="#757575"
+                    android:contentDescription="Confirm password icon"/>
+
+                <EditText
+                    android:id="@+id/confirmPasswordField"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:hint="Confirm Password"
+                    android:textColorHint="#9E9E9E"
+                    android:textColor="@color/brandDark"
+                    android:textSize="16sp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textPassword"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="0dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Create Account"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:onClick="register"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/brandGreen"
+            android:elevation="4dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Back to Login -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? "
+                android:textColor="#757575"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/backToLoginText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:textColor="@color/brandGreen"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+    </LinearLayout>
+</ScrollView>
