@@ -1,5 +1,7 @@
 package com.example.hotelease;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class login extends AppCompatActivity {
+public class login_page extends AppCompatActivity {
 
     private EditText emailField, passwordField;
     private Button manageUsersButton;
@@ -37,7 +39,7 @@ public class login extends AppCompatActivity {
 
         // Button click to open Manage Users
         manageUsersButton.setOnClickListener(v -> {
-            Intent intent = new Intent(login.this, manageUsers.class);
+            Intent intent = new Intent(login_page.this, UserManagementDashboard.class);
             startActivity(intent);
         });
 
@@ -83,7 +85,7 @@ public class login extends AppCompatActivity {
 
         // ADMIN LOGIN
         if (email.equals("admin@admin.hotel") && password.equals("adminhotel")) {
-            Intent intent = new Intent(login.this, manageUsers.class);
+            Intent intent = new Intent(login_page.this, UserManagementDashboard.class);
             intent.putExtra("isAdmin", true);
             startActivity(intent);
             finish();
@@ -98,9 +100,9 @@ public class login extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         String loggedInEmail = user != null ? user.getEmail() : email;
 
-                        Toast.makeText(login.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(login_page.this, "Login successful!", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(login.this, reserve.class);
+                        Intent intent = new Intent(login_page.this, room_reservation.class);
                         intent.putExtra("userEmail", loggedInEmail);
                         intent.putExtra("isAdmin", false);
                         startActivity(intent);
@@ -115,7 +117,7 @@ public class login extends AppCompatActivity {
     }
 
     public void goToRegister(View view) {
-        Intent intent = new Intent(login.this, register.class);
+        Intent intent = new Intent(login_page.this, registration_page.class);
         startActivity(intent);
     }
 }
