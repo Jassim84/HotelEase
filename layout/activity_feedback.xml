@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/header_background"
+                android:padding="24dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnBack"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_menu_close_clear_cancel"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="Back"
+                        android:layout_marginEnd="12dp"
+                        app:tint="#FFFFFF" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="⭐ Share Feedback"
+                            android:textColor="#FFFFFF"
+                            android:textSize="26sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="We'd love to hear about your stay"
+                            android:textColor="#E0E0E0"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Star Rating Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="How was your experience?"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121"
+                        android:layout_marginBottom="6dp"/>
+
+                    <TextView
+                        android:id="@+id/tvRatingLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tap a star to rate"
+                        android:textSize="13sp"
+                        android:textColor="#9E9E9E"
+                        android:layout_marginBottom="16dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageButton android:id="@+id/star1"
+                            android:layout_width="52dp" android:layout_height="52dp"
+                            android:src="@android:drawable/star_big_off"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:layout_marginHorizontal="4dp"
+                            android:contentDescription="1 star"/>
+                        <ImageButton android:id="@+id/star2"
+                            android:layout_width="52dp" android:layout_height="52dp"
+                            android:src="@android:drawable/star_big_off"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:layout_marginHorizontal="4dp"
+                            android:contentDescription="2 stars"/>
+                        <ImageButton android:id="@+id/star3"
+                            android:layout_width="52dp" android:layout_height="52dp"
+                            android:src="@android:drawable/star_big_off"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:layout_marginHorizontal="4dp"
+                            android:contentDescription="3 stars"/>
+                        <ImageButton android:id="@+id/star4"
+                            android:layout_width="52dp" android:layout_height="52dp"
+                            android:src="@android:drawable/star_big_off"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:layout_marginHorizontal="4dp"
+                            android:contentDescription="4 stars"/>
+                        <ImageButton android:id="@+id/star5"
+                            android:layout_width="52dp" android:layout_height="52dp"
+                            android:src="@android:drawable/star_big_off"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:layout_marginHorizontal="4dp"
+                            android:contentDescription="5 stars"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Category Chips Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="What did you enjoy? (optional)"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121"
+                        android:layout_marginBottom="14dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+
+                        <com.google.android.material.chip.Chip android:id="@+id/chipCleanliness"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🧹 Cleanliness" android:layout_marginEnd="8dp"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+                        <com.google.android.material.chip.Chip android:id="@+id/chipService"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🛎️ Service" android:layout_marginEnd="8dp"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+                        <com.google.android.material.chip.Chip android:id="@+id/chipFood"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🍽️ Dining"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.chip.Chip android:id="@+id/chipComfort"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🛏️ Comfort" android:layout_marginEnd="8dp"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+                        <com.google.android.material.chip.Chip android:id="@+id/chipLocation"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="📍 Location" android:layout_marginEnd="8dp"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
+                        <com.google.android.material.chip.Chip android:id="@+id/chipValue"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="💰 Value"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Written Feedback Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tell us more"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121"
+                        android:layout_marginBottom="12dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Share details about your stay..."
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etFeedback"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minLines="4"
+                            android:maxLines="7"
+                            android:maxLength="300"
+                            android:gravity="top"
+                            android:inputType="textMultiLine|textCapSentences"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tvCharCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 / 300"
+                        android:textSize="11sp"
+                        android:textColor="#9E9E9E"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Room Info Banner -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRoomInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#E8F5E9">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🏨"
+                        android:textSize="28sp"
+                        android:layout_marginEnd="12dp"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Submitting feedback for"
+                            android:textSize="12sp"
+                            android:textColor="#616161"/>
+
+                        <TextView
+                            android:id="@+id/tvRoomInfoLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="General feedback"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#2E7D32"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/btnSubmitFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Submit Feedback"
+                android:textAllCaps="false"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/brandGreen"
+                app:cornerRadius="14dp"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Previous Feedback Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Previous Feedback"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/brandDark"
+                android:layout_marginBottom="12dp"/>
+
+            <LinearLayout
+                android:id="@+id/previousFeedbackContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="32dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

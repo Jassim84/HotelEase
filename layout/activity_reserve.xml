@@ -141,7 +141,7 @@
                 android:layout_marginBottom="12dp"
                 android:layout_marginStart="4dp"/>
 
-            <!-- Rooms Container - Will be populated dynamically by Java code -->
+            <!-- Rooms Container - populated dynamically -->
             <LinearLayout
                 android:id="@+id/roomsContainer"
                 android:layout_width="match_parent"
@@ -188,37 +188,59 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
+                android:orientation="vertical"
                 android:layout_marginBottom="80dp">
 
+                <!-- Top Row: Dining + View Reservation -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="10dp">
+
+                    <Button
+                        android:id="@+id/btnGoToFoodMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="Dining Services"
+                        android:textAllCaps="false"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:backgroundTint="#455A64"
+                        android:textColor="#FFFFFF"
+                        app:cornerRadius="12dp"/>
+
+                    <Button
+                        android:id="@+id/btnGoToMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/brandGreen"
+                        android:text="View Reservation"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="12dp"/>
+                </LinearLayout>
+
+                <!-- Feedback Button (full width) -->
                 <Button
-                    android:id="@+id/btnGoToFoodMenu"
-                    android:layout_width="0dp"
+                    android:id="@+id/btnFeedback"
+                    android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="Dining Services"
+                    android:text="⭐  Leave Feedback"
                     android:textAllCaps="false"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:backgroundTint="#455A64"
+                    android:backgroundTint="#FFA000"
                     android:textColor="#FFFFFF"
                     app:cornerRadius="12dp"/>
 
-                <Button
-                    android:id="@+id/btnGoToMenu"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/brandGreen"
-                    android:text="View Reservation"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="12dp" />
             </LinearLayout>
 
         </LinearLayout>
